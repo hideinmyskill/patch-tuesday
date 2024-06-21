@@ -35,3 +35,24 @@ jobs:
               with:
                 commit_message: Update CSV and Email notifications
               id: auto-commit-action
+
+            - name: Get current month and year
+              id: date
+              run: |
+                echo "CURRENT_MONTH=$(date +'%B')" >> $GITHUB_ENV
+                echo "CURRENT_YEAR=$(date +'%Y')" >> $GITHUB_ENV
+
+            - name: Send an Email
+              if: steps.auto-commit-action.outputs.changes_detected == 'true'
+              uses: dawid66/action-send-mail@v3
+              with:
+                server_address: smtp.gmail.com
+                server_port: 465
+                username: {{secrets.MAIL_USERNAME}}
+                password: {{secrets.MAIL_PASSWORD}}
+                subject: 'New!! Microsoft Patch Tuesday'
+                to: clarkpagutaisidro12.cp@gmail.com
+                from: Patch Tuesday Scraper
+                html_body: file://Email-Notification.md
+                convert_markdown: true
+                attachments: ./spreadsheets/${{ env.CURRENT_YEAR }}/${{ env.CURRENT_MONTH }}/Patch-Tuesday-${{ env.CURRENT_MONTH }}-${{ env.CURRENT_YEAR }}.xlsx
