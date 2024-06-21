@@ -6,6 +6,7 @@ on:
     - cron: '0 22 7-13 * 2'
     # For AEDT (UTC+11), running at 9 PM UTC the previous day
     - cron: '0 21 7-13 * 2'
+    workflow_dispatch:
 
 jobs: 
     scraper:
