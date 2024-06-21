@@ -1,0 +1,30 @@
+name: Patch Tuesday Webscraper
+
+on: [workflow_dispatch]
+
+jobs: 
+    build:
+        runs-on: ubuntu-latest
+        steps:
+
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+
+            - name: Setup Python
+              uses: actions/setup-python@v4
+              with:
+                python-version: '3.9'
+            
+            - name: Install Packages
+              run: |
+                python -m pip install --upgrade pip
+                pip install -r requirements.txt
+
+            - name: Execute Script
+              run: python main.py
+
+            - name: Commit any changes
+              uses: stefanzweifel/git-auto-commit-action@v4
+              with:
+                commit_message: Update CSV and Email notifications
+              id: auto-commit-action
