@@ -1,6 +1,11 @@
 name: Patch Tuesday Webscraper
 
-on: [workflow_dispatch]
+on: 
+    schedule:
+    # For AEST (UTC+10), running at 10 PM UTC the previous day
+    - cron: '0 22 7-13 * 2'
+    # For AEDT (UTC+11), running at 9 PM UTC the previous day
+    - cron: '0 21 7-13 * 2'
 
 jobs: 
     scraper:
