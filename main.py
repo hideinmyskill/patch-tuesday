@@ -188,7 +188,7 @@ If you have any questions regarding this advisory, please contact AUCloud Securi
 
     """
 
-    md_file_path = f'./spreadsheets/{current_year}/{current_month}/Email-Notification.md'
+    md_file_path = f'./Email-Notification.md'
     with open(md_file_path, 'w') as file:
         file.write(latest_email)
 
