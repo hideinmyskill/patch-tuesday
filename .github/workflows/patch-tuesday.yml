@@ -3,7 +3,7 @@ name: Patch Tuesday Webscraper
 on: [workflow_dispatch]
 
 jobs: 
-    build:
+    scraper:
         runs-on: ubuntu-latest
         steps:
 

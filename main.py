@@ -168,23 +168,23 @@ def write_an_email(headline, dictionary):
     markdown_table = df.to_markdown(index=False)
 
     latest_email = f"""
-    # Latest Patch Notification Email to be Sent!
+# Latest Patch Notification Email to be Sent!
 
-    ## {headline}
+## {headline}
 
-    Microsoft have released their monthly Patch Tuesday cycle for {current_month}. This has been assessed by the AUCloud Security Operations Team.
-    Of note, there were **{dictionary['flaws']}** Vulnerabilities patched this month, with **({dictionary['critical']})** of these assessed as **CRITICAL**, **{dictionary['important']}**. There were **{dictionary['zero-days']} Zero-Days** vulnerabilities.
+Microsoft have released their monthly Patch Tuesday cycle for {current_month}. This has been assessed by the AUCloud Security Operations Team.
+Of note, there were **{dictionary['flaws']}** Vulnerabilities patched this month, with **({dictionary['critical']})** of these assessed as **CRITICAL**, **{dictionary['important']}**. There were **{dictionary['zero-days']} Zero-Days** vulnerabilities.
 
-    A list of affected products in **{current_month}** is as follows:
-    {markdown_table}
+A list of affected products in **{current_month}** is as follows:
+{markdown_table}
 
-    Please see the attched spreadsheet for further information regarding the vulnerabilities.
+Please see the attched spreadsheet for further information regarding the vulnerabilities.
 
-    AUCloud SOC have detection mechanism in place and with other Essential8 (E8) mitigations, do not believe this warrants a 48hr-patch window. All critical vulnerabilities must be patched within 2 weeks and the others can be patched within 4 weeks. AUCloud recommend patching completed of all Windows infrastructure within 2 Weeks.
+AUCloud SOC have detection mechanism in place and with other Essential8 (E8) mitigations, do not believe this warrants a 48hr-patch window. All critical vulnerabilities must be patched within 2 weeks and the others can be patched within 4 weeks. AUCloud recommend patching completed of all Windows infrastructure within 2 Weeks.
 
-    Please note, all recommendations are subject to change based on new information being disclosed on these patches.
+Please note, all recommendations are subject to change based on new information being disclosed on these patches.
 
-    If you have any questions regarding this advisory, please contact AUCloud Security Operations.
+If you have any questions regarding this advisory, please contact AUCloud Security Operations.
 
     """
 
