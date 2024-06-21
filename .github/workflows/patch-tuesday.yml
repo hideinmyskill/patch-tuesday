@@ -48,8 +48,8 @@ jobs:
               with:
                 server_address: smtp.gmail.com
                 server_port: 465
-                username: {{secrets.MAIL_USERNAME}}
-                password: {{secrets.MAIL_PASSWORD}}
+                username: ${{secrets.MAIL_USERNAME}}
+                password: ${{secrets.MAIL_PASSWORD}}
                 subject: 'New!! Microsoft Patch Tuesday'
                 to: clarkpagutaisidro12.cp@gmail.com
                 from: Patch Tuesday Scraper
