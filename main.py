@@ -165,7 +165,8 @@ def create_dataset(URL):
 def write_an_email(headline, dictionary):
     df = pd.read_excel(f'./spreadsheets/{current_year}/{current_month}/CVE-Unique-{current_month}-{current_year}.xlsx')
     # Convert the DataFrame to a Markdown table
-    markdown_table = df.to_markdown(index=False)
+    # markdown_table = df.to_markdown(index=False)
+    html_table = df.to_html(index=False)
 
     latest_email = f"""
 # Latest Patch Notification Email to be Sent!
@@ -176,7 +177,7 @@ Microsoft have released their monthly Patch Tuesday cycle for {current_month}. T
 Of note, there were **{dictionary['flaws']}** Vulnerabilities patched this month, with **({dictionary['critical']})** of these assessed as **CRITICAL**, **{dictionary['important']}**. There were **{dictionary['zero-days']} Zero-Days** vulnerabilities.
 
 A list of affected products in **{current_month}** is as follows:
-{markdown_table}
+{html_table}
 
 Please see the attched spreadsheet for further information regarding the vulnerabilities.
 
@@ -187,10 +188,38 @@ Please note, all recommendations are subject to change based on new information 
 If you have any questions regarding this advisory, please contact AUCloud Security Operations.
 
     """
+    #HTML Format for email
+    latest_email_html = f"""
+<!DOCTYPE html>
+<html>
+<style>
+    th, td {
+        border: 1px solid black; /* Sets border for table headers and cells */
+        padding: 5px; /* Adds space between the text and the border */
+    }
+</style>
+<h1 id="latest-patch-notification-email-to-be-sent-">Latest Patch Notification Email to be Sent!</h1>
+<h2 id="-{headline}-">{headline}</h2>
+<p>Microsoft have released their monthly Patch Tuesday cycle for {current_month}. This has been assessed by the AUCloud Security Operations Team.
+Of note, there were <strong>{dictionary['flaws']}</strong> Vulnerabilities patched this month, with <strong>({dictionary['critical']})</strong> of these assessed as <strong>CRITICAL</strong>, <strong>{dictionary['important']}</strong> assessed as <strong>IMPORTANT</strong>. There were <strong>{dictionary['zero-days']} Zero-Days</strong> vulnerabilities.</p>
+<<br>
+<p>A list of affected products in <strong>{current_month}</strong> is as follows:
+<br>
+<br>
+{html_table}
+<br>
+<br>
+<p>Please see the attched spreadsheet for further information regarding the vulnerabilities.</p>
+<p>AUCloud SOC have detection mechanism in place and with other Essential8 (E8) mitigations, do not believe this warrants a 48hr-patch window. All critical vulnerabilities must be patched within 2 weeks and the others can be patched within 4 weeks. AUCloud recommend patching completed of all Windows infrastructure within 2 Weeks.</p>
+<p>Please note, all recommendations are subject to change based on new information being disclosed on these patches.</p>
+<p>If you have any questions regarding this advisory, please contact AUCloud Security Operations.</p>
+</html>
+    """
 
-    md_file_path = f'./Email-Notification.md'
-    with open(md_file_path, 'w') as file:
-        file.write(latest_email)
+    #md_file_path = f'./Email-Notification.md'
+    html_file_path = f'./Email-Notification.html'
+    with open(html_file_path, 'w') as file:
+        file.write(latest_email_html)
 
 
 URL = "https://www.bleepingcomputer.com/tag/patch-tuesday/"
