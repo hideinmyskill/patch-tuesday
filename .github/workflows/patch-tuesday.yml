@@ -51,8 +51,8 @@ jobs:
                 username: ${{secrets.MAIL_USERNAME}}
                 password: ${{secrets.MAIL_PASSWORD}}
                 subject: 'New!! Microsoft Patch Tuesday'
-                to: cpagutaisidro@aucloud.com.au
-                cc: nballal@aucloud.com.au, mdolores@aucloud.com.au
+                to: ${{secrets.MY_WORK_EMAIL}}
+                cc: ${{secrets.MARK_WORK_EMAIL}}, ${{secrets.NIK_WORK_EMAIL}}
                 from: Patch Tuesday Scraper
                 html_body: file://Email-Notification.html
                 convert_markdown: true
