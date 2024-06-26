@@ -245,6 +245,7 @@ for patch in headlines:
             soup_headline = BeautifulSoup(str(patch), 'html.parser')
             h4_contents = [h4.get_text() for h4 in soup_headline.find_all('h4')]
             link = soup_headline.find('a')['href']
+            print(link)
 
 
 #check if file is already created
