@@ -202,7 +202,7 @@ If you have any questions regarding this advisory, please contact AUCloud Securi
 <h2 id="-{headline}-">{headline}</h2>
 <p>Microsoft have released their monthly Patch Tuesday cycle for {current_month}. This has been assessed by the AUCloud Security Operations Team.
 Of note, there were <strong>{dictionary['flaws']}</strong> Vulnerabilities patched this month, with <strong>({dictionary['critical']})</strong> of these assessed as <strong>CRITICAL</strong>, <strong>{dictionary['important']}</strong> assessed as <strong>IMPORTANT</strong>. There were <strong>{dictionary['zero-days']} Zero-Days</strong> vulnerabilities.</p>
-<<br>
+<br>
 <p>A list of affected products in <strong>{current_month}</strong> is as follows:
 <br>
 <br>
