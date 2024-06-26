@@ -54,6 +54,6 @@ jobs:
                 to: cpagutaisidro@aucloud.com.au
                 cc: nballal@aucloud.com.au, mdolores@aucloud.com.au
                 from: Patch Tuesday Scraper
-                html_body: file://Email-Notification.md
+                html_body: file://Email-Notification.html
                 convert_markdown: true
                 attachments: ./spreadsheets/${{ env.CURRENT_YEAR }}/${{ env.CURRENT_MONTH }}/Patch-Tuesday-${{ env.CURRENT_MONTH }}-${{ env.CURRENT_YEAR }}.xlsx
