@@ -193,10 +193,10 @@ If you have any questions regarding this advisory, please contact AUCloud Securi
 <!DOCTYPE html>
 <html>
 <style>
-    th, td {
+    th, td \{
         border: 1px solid black; /* Sets border for table headers and cells */
         padding: 5px; /* Adds space between the text and the border */
-    }
+    \}
 </style>
 <h1 id="latest-patch-notification-email-to-be-sent-">Latest Patch Notification Email to be Sent!</h1>
 <h2 id="-{headline}-">{headline}</h2>
